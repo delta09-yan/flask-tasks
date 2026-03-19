@@ -341,11 +341,15 @@ def carousel():
 @app.route('/index')
 def index():
     jobs = db_sess.query(Jobs).all()
+    names = {}
     for job in jobs:
         print(job)
+    users = db_sess.query(User).all()
+    for user in users:
+        names[user.id] = f"{user.surname} {user.name}"
     param = {}
     param['title'] = 'main'
-    return render_template('index.html', jobs=jobs, **param)
+    return render_template('index.html', jobs=jobs, names=names, **param)
 
 
 @app.route('/training/<prof>')
