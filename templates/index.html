@@ -17,10 +17,15 @@
      <tbody>
     <tr>
       <th scope="row">{{ job.job }}</th>
-      <td>{{ job.team_leader }}</td>
+      <td>{{ names[job.team_leader] }}</td>
       <td>{{ job.work_size }}</td>
       <td>{{ job.collaborators }}</td>
-        <td>{{ job.is_finished }}</td>
+      {% if job.is_finished %}
+
+        <td bgcolor="#9ef7b7"> Finished</td>
+      {% else %}
+      <td bgcolor="#eb7277"> Is not finished</td>
+      {% endif %}
     </tr>
 </table>
 
